@@ -58,6 +58,15 @@ public class CalculatorDemo {
   
 }
 ```
+실행 결과
+```
+etOprands(int left, int right)
+30
+15
+setOprands(int left, int right, int third)
+60
+30
+```
 ```
 c1.setOprands(10,20);
 ```
