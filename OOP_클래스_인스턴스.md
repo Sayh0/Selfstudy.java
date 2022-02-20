@@ -25,8 +25,7 @@ Calculator c1 = new Calculator();
    
    
 ```java
-package org.opentutorials.javatutorials.object;
- 
+
 class Calculator{ // ㉢
     int left, right; // ㉣
       
