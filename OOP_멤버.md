@@ -53,7 +53,8 @@ class Caculator {
     public void setOprands(int left, int right) {
 ...
 ```
-변수 PI 앞에 static 이 붙었다. **static을 멤버(변수 메소드) 앞에 붙이면 클래스의 멤버가 된다.** 이제 만들었으니 어떻게 쓰는 지 알아보자.
+변수 PI 앞에 static 이 붙었다. **static을 멤버(변수 메소드) 앞에 붙이면 클래스의 멤버, 그러니까 클래스 소속의 변수가 된다.** 
+이제 만들었으니 어떻게 쓰는 지 알아보자.
 클래스 변수에 접근하는 방법은,
 ```
 System.out.println(c1.PI); // 인스턴스를 통해 PI에 접근.
