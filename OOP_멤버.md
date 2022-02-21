@@ -149,3 +149,48 @@ class Calculator3 {
 ```
 sum이라는 메소드에 static이라는 키워드를 달면 클래스 소속의 메소드가 된다. 그 메소드의 인자값으로 left, right값을 주고 그 계산값을 print로 화면에 출력하고 있다.
 클래스에 직접 접근해서 실행할 수 있게 되는 것이다. 만약 메소드가 인스턴스 변수를 참조하지 않는다면, **클래스 메소드를 사용해서 불필요한 인스턴스 생성을 막을 수 있다.**
+
+## 클래스 메소드2
+클래스와 인스턴스의 차이를 알아보기 위해 오류가 있는 코드를 보기로 하자. 보기 전에 몇가지 원칙을 기억하고 예제를 보면 이해가 더 쉽다.<br>
+**1. 인스턴스 메소드는 클래스 멤버에 접근할 수 있다.**
+**2. 클래스 메소드는 인스턴스 멤버에 접근할 수 없다.**<br>
+인스턴스 변수는 인스턴스가 만들어지면서 생성되는데, 클래스 메소드는 인스턴스가 생성되기 전에 **먼저** 만들어진다. 
+따라서 클래스 메소드가 인스턴스 멤버에 접근하는 건 존재하지 않는 변수에 접근하는 것이기 때문에 불가능하다. 코드를 보자.
+```java
+class C1 {
+	static int static_variable = 1; // 클래스 변수
+	int instance_variable = 2; // 인스턴스 변수
+	static void static_static() { // 클래스 메소드가 클래스 변수를 호출.
+		System.out.println(static_variable);
+	}
+	static void static_instance() { // 클래스 메소드가 인스턴스 변수를 호출.
+		System.out.println(instance_variable); // 오류. 클래스 메소드에선 인스턴스 변수에 접근 불가
+	}
+	void instance_static() {
+		System.out.println(static_variable);	
+	}
+	void instance_instance() {
+		System.out.println(instance_variable);
+	} // 인스턴스 메소드에선 클래스 메소드에 접근 가능.
+}
+public class ClassMemberDemo {
+	public static void main(String[] args) {
+		C1 c = new C1(); // C1이라는 클래스를 c라는 인스턴스에 담음.
+		c.static_static(); // 인스턴스 메소드에서 클래스 변수에 접근.
+		c.static_instance(); // 실패! 클래스 메소드에서 인스턴스 변수에 접근 불가.
+		c.instance_static(); // 인스턴스 변수에서 클래스 변수에 접근.
+		c.instance_instance(); // 인스턴스 메소드에서 인스턴스 변수에 접근.
+		C1.static_static(); // 클래스를 통해서 직접 클래스 메소드에 접근.
+		C1.static_instance(); // 실패! 클래스 메소드에서 인스턴스 변수에 접근 불가.
+		C1.instance_static(); // 실패! 클래스를 통해서 인스턴스 메소드는 접속 불가.
+		C1.instance_instance(); // 실패! 클래스를 통해 인스턴스 변수에도 접속 불가.
+	}
+
+}
+```
+인스턴스 변수와 클래스 변수는 아래와 같이 부르기도 한다.<br>
+
+* 인스턴스 변수 -> Non-Static Field
+* 클래스 변수 -> Static Field<br>
+
+필드(field)라는 것은 클래스 전역에서 접근 할 수 있는 변수를 의미하는데, 이에 대한 자세한 내용은 유효범위에서 다룬다.
