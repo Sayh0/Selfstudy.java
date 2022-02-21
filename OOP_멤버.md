@@ -136,7 +136,7 @@ public class CalculatorDemo3 {
 
 }
 ```
-원래는 Calculator라는 클래스를 구체화시킨 인스턴스를 만들어서(Calculator c1 = new Calculator();`이런 식으로) 진행했다.
+원래는 Calculator라는 클래스를 구체화시킨 인스턴스를 만들어서(`Calculator c1 = new Calculator();`이런 식으로) 진행했다.
 근데 이번 예제는 인스턴스가 드러나지 않는다. 그냥 `Calculator3.sum(10, 20);`처럼 클래스에 직접 접근에서 sum과 avg를 호출하고 있는 것이다.
 Calculator3가 어떻게 구현되어 있는가 살펴보면,
 ```
