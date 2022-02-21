@@ -108,3 +108,44 @@ public class CalculatorDemo2 {
 * 인스턴스에 따라 변하지 않는 값이 필요할 때 (후에 배울 final이 좀 더 유용하긴 하지만 아직 안 배웠으니 패스)
 * 인스턴스를 생성할 필요가 없는 값을 클래스에 저장하고 싶을 때.
 * 값의 변경 사항을 모든 인스턴스가 공유해야 할 때.
+
+## 클래스 메소드
+클래스 변수가 있으면 클래스 메소드도 있겠지. 예제 Calculator 에서는 인스턴스 변수 left와 right로 합계와 평균을 구한다. 
+굳이 인스턴스가 항상 left, right 값을 유지해야 할까? 노노. 합계나 평균을 구할 때마다 좌항과 우항의 값을 주는 방식으로 계산할 수도 있다. 아래를 보자.
+```java
+class Calculator3 {
+	
+	public static void sum(int left, int right) {
+		System.out.println(left + right);
+	}
+	
+	public static void avg(int left, int right) {
+		System.out.println((left+right)/2);
+	}
+	
+}
+public class CalculatorDemo3 {
+	
+	public static void main(String[] args) {
+		Calculator3.sum(10, 20);
+		Calculator3.avg(10, 20);
+		
+		Calculator3.sum(20, 40);
+		Calculator3.avg(20, 40);
+	}
+
+}
+```
+원래는 Calculator라는 클래스를 구체화시킨 인스턴스를 만들어서(Calculator c1 = new Calculator();`이런 식으로) 진행했다.
+근데 이번 예제는 인스턴스가 드러나지 않는다. 그냥 `Calculator3.sum(10, 20);`처럼 클래스에 직접 접근에서 sum과 avg를 호출하고 있는 것이다.
+Calculator3가 어떻게 구현되어 있는가 살펴보면,
+```
+class Calculator3 {
+	
+	public static void sum(int left, int right) {
+		System.out.println(left + right);
+	}
+...
+```
+sum이라는 메소드에 static이라는 키워드를 달면 클래스 소속의 메소드가 된다. 그 메소드의 인자값으로 left, right값을 주고 그 계산값을 print로 화면에 출력하고 있다.
+클래스에 직접 접근해서 실행할 수 있게 되는 것이다. 만약 메소드가 인스턴스 변수를 참조하지 않는다면, **클래스 메소드를 사용해서 불필요한 인스턴스 생성을 막을 수 있다.**
