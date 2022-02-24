@@ -14,7 +14,7 @@ public void setOprands(int left, int right, int third){
 }
 ``` 
 다만 이를 위해 기존의 setOprands 메소드를 수정한다면 2개의 입력값을 받을 수 없게 될 것이다.(2개 받는 메소드를 3개로 수정했으니). 메소드의 이름을 변경해서 또 만들수도 있지만 그렇게 되면 
-매개변수 수에 따라 메소드를 한도 끝도 없이 만들수도 없는 노릇. 어떻게 할까? 이렇게 한다.
+매개변수 수에 따라 메소드를 한도 끝도 없이 만들수도 없는 노릇. 어떻게 할까?
 ```java
  class Calculator{
     int left, right;
