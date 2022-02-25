@@ -143,7 +143,7 @@ sub class : void A (String arg1, String arg2)
 클래스 `OverloadingDemo2`는 `OverloadingDemo`를 상속받고 있다. 
 `OverloadingDemo2`에서 정의 된 메소드 `void A (String arg1, String arg2)`는 문자열 데이터 타입의 매개변수 2개를 가지고 있다.
 이러한 형태의 변수는 부모 클래스에선 정의되있지 않으니, 자동으로 메소드 오버로딩이 이루어진다.
-반면 `void A ()` 메소드는 매개변수가 없다. 부모 클래스에도 매개변수 없는 가 존재한다. 
+반면 `void A ()` 메소드는 매개변수가 없다. 부모 클래스에도 매개변수 없는 [`void A ()`](#void-A)가 존재한다. 
 이 둘은 매개변수 형태가 같기 때문에 오버로딩이 아니라 **오버라이딩**Overriding이다.
 
 ### 오버로딩? 오버라이딩?
