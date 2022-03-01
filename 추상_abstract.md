@@ -77,7 +77,8 @@ public class AbstractDemo {
 
 ---
 ## 추상 클래스를 사용하는 이유 
-추상 클래스는 상속을 강제하기 위한 것이다. 부모 클래스에는 메소드의 시그니처만 정의해놓고, 그 메소드의 실제 동작 방법은 이 메소드를 상속받은 하위 클래스의 책임으로 위임한다.<br>
+추상 클래스는 상속을 강제하기 위한 것이다. 보통은 큰 프로젝트에서 이런 식의 코드를 작성한다.
+부모 클래스에는 메소드의 시그니처만 정의해놓고, 그 메소드의 실제 동작 방법은 이 메소드를 상속받은 하위 클래스의 책임으로 위임한다.<br>
 쓰던 계산기 코드에 추상 클래스 개념을 추가해 보자.
 ```java
 abstract class Calculator{
@@ -86,27 +87,33 @@ abstract class Calculator{
 		this.left = left;
 		this.right = right;
 	}
-	public abstract void sum();
+	int _sum() {
+		return this.left + this.right; // 공통사용할 덧셈 로직
+	}
+	int _avg() {
+		return (this.left+this.right) / 2); // 공통사용할 평균 로직
+	}
+	public abstract void sum(); // 사용자가 디자인하는 부분은 abstract 선언.
 	public abstract void avg();
-	public void run() {
+	public void run() { //run 메소드로 sum avg 한번에 실행. run 에서는 뭐가 동작하는지만 정해둠. 자세한건 하위 클래스에서 정하게.
 		sum();
 		avg();
 	}
 }
 class CalculatorDecoPlus extends Calculator {
-	public void sum() {
-		System.out.println("+ sum : "+(this.left + this.right));
+	public void sum() { // 상속이 강제된 sum을 호출해서 상속시킴.
+		System.out.println("+ sum : "+ _sum()); // 공통 사용하는 sum 로직 활용
 	}
 	public void avg() {
-		System.out.println("/ avg : "+((this.left+this.right)/2));
+		System.out.println("+ avg : "+ _avg()); // 공통 사용하는 avg 로직 활용
 	}
 }
 class CalculatorDecoMinus extends Calculator {
-    public void sum(){
-        System.out.println("- sum :"+(this.left+this.right));
+    public void sum(){ // 활용이 달라졌기에 다시 sum 불러서 상속.
+        System.out.println("- sum :"+ _sum());
     }
     public void avg(){
-        System.out.println("- avg :"+(this.left+this.right)/2);
+        System.out.println("- avg :" + _avg());
     }
 } 
 public class CalculatorDemo {
@@ -123,11 +130,11 @@ public class CalculatorDemo {
 ```
 ```
 + sum : 30
-/ avg : 15
++ avg : 15
 - sum :30
 - avg :15
 ```
-위 코드는 sum을 실행하고 avg를 실행하는 절차를 메소드 run을 통해 한 번에 실행시키는 코드이다.
+위 코드는 sum을 실행하고 avg를 실행하는 절차를 메소드 run을 통해 간단하게 한 번에 실행시키는 코드이다.
 그런데 경우에 따라 합계와 평균을 화면에 출력하는 모습이 달라야 한다면?
-상황에 따라 동작 방법이 달라진다면 그 메소드(여기서는 sum,avg)는 추상 메소드로 만들어 하위 클래스에서 구현하도록 하고,
-모든 클래스의 공통분모(여기서는 setOprands, run)는 상위 클래스에 두어 코드의 중복 피하고, 유지보수의 용이성을 꾀할 수 있다.
+**상황에 따라 동작 방법이 달라질 때 추상 메소드를 활용한다.** 달라지는 메소드(여기서는 sum,avg)는 추상 메소드로 만들어 하위 클래스에서 구현하도록 하고,
+모든 클래스의 공통분모(여기서는 setOprands, run)는 상위 클래스에 둔다. 이렇게 하면 코드의 중복을 피하고, 유지보수의 용이성을 꾀할 수 있다.
