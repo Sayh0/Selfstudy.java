@@ -77,4 +77,57 @@ public class AbstractDemo {
 
 ---
 ## 추상 클래스를 사용하는 이유 
-
+추상 클래스는 상속을 강제하기 위한 것이다. 부모 클래스에는 메소드의 시그니처만 정의해놓고, 그 메소드의 실제 동작 방법은 이 메소드를 상속받은 하위 클래스의 책임으로 위임한다.<br>
+쓰던 계산기 코드에 추상 클래스 개념을 추가해 보자.
+```java
+abstract class Calculator{
+	int left, right;
+	public void setOprands(int left, int right) {
+		this.left = left;
+		this.right = right;
+	}
+	public abstract void sum();
+	public abstract void avg();
+	public void run() {
+		sum();
+		avg();
+	}
+}
+class CalculatorDecoPlus extends Calculator {
+	public void sum() {
+		System.out.println("+ sum : "+(this.left + this.right));
+	}
+	public void avg() {
+		System.out.println("/ avg : "+((this.left+this.right)/2));
+	}
+}
+class CalculatorDecoMinus extends Calculator {
+    public void sum(){
+        System.out.println("- sum :"+(this.left+this.right));
+    }
+    public void avg(){
+        System.out.println("- avg :"+(this.left+this.right)/2);
+    }
+} 
+public class CalculatorDemo {
+	public static void main(String[] args) {
+		CalculatorDecoPlus c1 = new CalculatorDecoPlus();
+		c1.setOprands(10,20);
+		c1.run();
+		
+		CalculatorDecoMinus c2 = new CalculatorDecoMinus();
+		c2.setOprands(10,20);
+		c2.run();
+	}
+}
+```
+```
++ sum : 30
+/ avg : 15
+- sum :30
+- avg :15
+```
+위 코드는 sum을 실행하고 avg를 실행하는 절차를 메소드 run을 통해 한 번에 실행시키는 코드이다.
+그런데 경우에 따라 합계와 평균을 화면에 출력하는 모습이 달라야 한다면?
+상황에 따라 동작 방법이 달라진다면 그 메소드(여기서는 sum,avg)는 추상 메소드로 만들어 하위 클래스에서 구현하도록 하고,
+모든 클래스의 공통분모(여기서는 setOprands, run)는 상위 클래스에 두어 코드의 중복 피하고, 유지보수의 용이성을 꾀할 수 있다.
