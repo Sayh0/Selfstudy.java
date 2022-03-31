@@ -28,7 +28,33 @@ Object 클래스가 가지고 있는 메소드 목록이다. 자바의 객체는
 ## toString
 **toString**은 객체를 문자로 표현하는 메소드이다. 매일 쓰던 계산기 코드로 알아보자.
 ```java
+class Calculator {
+	int left, right;
+	
+	public void setOprands(int left, int right) {
+		this.left = left;
+		this.right = right;
+	}
+	public void sum() {
+		System.out.println(this.left + this.right);
+	}
+	
+	public void avg() {
+        System.out.println((this.left+this.right)/2);
+	}
+}
 public class CalculatorDemo {
+	public static void main(String[] args) {
+		Calculator c1 = new Calculator();
+		c1.setOprands(10, 20);
+		System.out.println(c1);
+		
+	}
+
+}
+```
+`System.out.println(c1);`코드를 통해 클래스 `Calculator`의 인스턴스 `c1`을 화면에 출력하고 있다.
+
 
 
 
