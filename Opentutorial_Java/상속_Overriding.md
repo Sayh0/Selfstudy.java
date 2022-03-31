@@ -56,8 +56,8 @@ public class CalculatorDemo {
    
 ## 메소드 오버라이딩의 조건
 원래 코드에서는 상위 클래스에서 정의하고 있는 메소드 `avg`의 계산 결과를 화면에 출력하고 있다. 이걸 화면 출력 대신 메소드 바깥쪽으로 리턴하게 하고 싶다면 어떻게 할까?
-하위 클래스의 `avg`를 `overriding`하면 된다.
-주의해야 할 점은, `overriding` 하기 위해선 메소드와 리턴 형식이 같아야 한다는 것이다. 
+하위 클래스의 `avg`를 overriding하면 된다.
+주의해야 할 점은, overriding 하기 위해선 메소드와 리턴 형식이 같아야 한다는 것이다. 
 부모 클래스 `Calculator`의 메소드 `avg` 리턴 타입은 void이다. 이것을 상속한 하위 `SubstractableCalculator` 클래스의 리턴 타입은 int이다. 맞추지 않으면 에러가 발생한다. 
 오버라이딩 하려면
 
@@ -65,7 +65,7 @@ public class CalculatorDemo {
 * 메소드의 이름
 * 메소드 매개변수의 개수, 데이터타입, 순서
 
-을 같게 만들어야 한다. 이것을 메소드의 **서명signature**이라하고, 다를 시 에러가 발생한다. 에러를 염두하면서 상위 클래스 코드를 변경해 보겠다.
+을 같게 만들어야 한다. 이것을 메소드의 **서명signature**이라 한다. 서명이 다를 시 에러가 발생한다. 에러를 염두하면서 상위 클래스 코드를 변경해 보겠다.
 
 ```java
 package org.opentutorials.javatutorials.overriding.example1;
