@@ -1,5 +1,6 @@
 ## Account
 <br/>
+
 ```java
 package BankProject;
 
@@ -45,9 +46,13 @@ public class Account {
 
 }
 ```
+
 <br/>
+
 ## BankManager
+
 <br/>
+
 ```java
 package BankProject;
 import java.util.*;
@@ -140,11 +145,13 @@ public class BankManager {
 	
 }
 ```
-/
 <br/>
-##BankTest
+
+## BankTest
+
 <br/>
-```
+
+```java
 package BankProject;
 import java.util.*;
 public class BankTest {
