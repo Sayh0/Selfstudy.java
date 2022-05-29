@@ -206,3 +206,44 @@ public class BankTest {
 
 }
  ```
+
+## GUI
+
+```java
+package BankProject;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.Dimension;
+import java.awt.BorderLayout;
+ 
+public class BankFrame {
+	public static void main(String[] args) {
+		JFrame frame =new JFrame();
+		JPanel panel = new JPanel();
+		JLabel label = new JLabel("BankSystem");
+		JButton btn1 = new JButton("Join");
+		JButton btn2 = new JButton("Login");
+		JButton btn3 = new JButton("Exit");
+ 
+		JTextArea txtArea = new JTextArea();
+
+		panel.setLayout(new BorderLayout());
+		panel.add(label , BorderLayout.NORTH);
+		panel.add(btn1 , BorderLayout.WEST);
+		panel.add(txtArea , BorderLayout.CENTER);
+		frame.add(panel);
+		
+		frame.setResizable(true);
+
+		frame.setVisible(true);
+		
+		frame.setPreferredSize(new Dimension( 840 , 840/12*9)); // 화면비율 4:3으로
+
+		frame.setSize(840, 840/12*9);
+ 
+		frame.setLocationRelativeTo(null);//화면출력위치 조절 = 기본값(가운데)
+ 
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+	}
+}
+```
