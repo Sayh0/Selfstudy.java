@@ -211,39 +211,30 @@ public class BankTest {
 
 ```java
 package BankProject;
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.Dimension;
-import java.awt.BorderLayout;
  
-public class BankFrame {
-	public static void main(String[] args) {
-		JFrame frame =new JFrame();
-		JPanel panel = new JPanel();
-		JLabel label = new JLabel("BankSystem");
-		JButton btn1 = new JButton("Join");
-		JButton btn2 = new JButton("Login");
-		JButton btn3 = new JButton("Exit");
+import java.awt.FlowLayout;
  
-		JTextArea txtArea = new JTextArea();
-
-		panel.setLayout(new BorderLayout());
-		panel.add(label , BorderLayout.NORTH);
-		panel.add(btn1 , BorderLayout.WEST);
-		panel.add(txtArea , BorderLayout.CENTER);
-		frame.add(panel);
-		
-		frame.setResizable(true);
-
-		frame.setVisible(true);
-		
-		frame.setPreferredSize(new Dimension( 840 , 840/12*9)); // 화면비율 4:3으로
-
-		frame.setSize(840, 840/12*9);
+import javax.swing.JButton;
+import javax.swing.JFrame;
  
-		frame.setLocationRelativeTo(null);//화면출력위치 조절 = 기본값(가운데)
+public class BankFrame extends JFrame {
+    //생성자
+    public BankFrame() {
+        setSize(300, 200); //크기 설정
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("BankSysTem GUI");
+        
+        setLayout(new FlowLayout()); //배치 관리자 설정
+        JButton btn1 = new JButton("버튼");
+        
+        //컴포넌트 생성 및 추가
+        this.add(btn1);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        new BankFrame();
+    }
  
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-	}
 }
+
 ```
